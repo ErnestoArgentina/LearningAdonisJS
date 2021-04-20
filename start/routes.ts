@@ -33,9 +33,19 @@ Route.get('health', async ({ response }) => {
 Route.on('/').render('welcome')
 Route.on('/auth').render('auth')
 
+Route.on('/admin').render('layouts/admin/admin')
+
 // User
 Route.get('users', 'UsersController.index')
 Route.post('users', 'UsersController.store')
+//Clients
+Route.resource('clients', 'ClientsController')
 // Auth
 Route.on('/register').render('auth/register')
 Route.post('/register', 'AuthController.register')
+
+
+Route.group(() => {
+  //
+}).middleware(['auth'])
+
