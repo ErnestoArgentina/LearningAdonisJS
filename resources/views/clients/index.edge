@@ -1,13 +1,13 @@
-@extends('layouts.admin.admin')
+@layout('layouts.admin.admin')
 
 @section('page-name')
-    Lista de Estudantes
+    List
 @endsection
 
 @section('breadcrumb')
     {{--    <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i> Estudantes</a></li>--}}
-    <li class="breadcrumb-item"><a href="/"> Estudantes</a></li>
-    <li class="breadcrumb-item active">Lista</li>
+    <li class="breadcrumb-item"><a href="/"> Clients</a></li>
+    <li class="breadcrumb-item active">List</li>
 @endsection
 
 @section('conteudo')
@@ -15,49 +15,29 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2><strong>Lista</strong></h2>
-{{--                    <ul class="header-dropdown">--}}
-{{--                        <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle"--}}
-{{--                                                data-toggle="dropdown" role="button" aria-haspopup="true"--}}
-{{--                                                aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>--}}
-{{--                            <ul class="dropdown-menu dropdown-menu-right slideUp float-right">--}}
-{{--                                <li><a href="javascript:void(0);">Action</a></li>--}}
-{{--                                <li><a href="javascript:void(0);">Another action</a></li>--}}
-{{--                                <li><a href="javascript:void(0);">Something else</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                        <li class="remove">--}}
-{{--                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
+                    <h2><strong>List</strong></h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Nacionalidade</th>
-                                <th>Morada</th>
-                                <th>Email</th>
-                                <th>Curso</th>
-                                <th>Acção</th>
+                                <th>Complete name</th>
+                                <th>Phone</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($estudantes as $estudante)
+                            @each(client in clients)
                                 <tr>
-                                    <td>{{$estudante->nome}} {{$estudante->apelido}}</td>
-                                    <td>{{$estudante->nacionalidade}}</td>
-                                    <td>{{$estudante->morada}}</td>
-                                    <td>{{$estudante->email}}</td>
-                                    <td>{{$estudante->curso_id}}</td>
+                                    <td>{{client.name}} {{client.surname}}</td>
+                                    <td>{{client.phone}}</td>
                                     <td>
                                         <button class="btn btn-danger">Eliminar</button>
-                                        <a href="/" class="btn btn-primary">Detalhes</a>
+                                        <a href="{{route('clients.show',{id: client.id})}}" class="btn btn-primary">Detalhes</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endeach
                             </tbody>
                         </table>
                     </div>
