@@ -45,6 +45,8 @@ Route.on('/clients/new').render('clients/create')
 // Auth
 Route.on('/register').render('auth/register')
 Route.post('/register', 'AuthController.register')
+Route.on('/login').render('auth/login')
+Route.post('/login', 'AuthController.login')
 
 
 Route.group(() => {
