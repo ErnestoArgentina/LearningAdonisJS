@@ -1,0 +1,44 @@
+@layout('layouts.admin.admin')
+
+@section('page-name')
+    Details
+@endsection
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/"> Clients</a></li>
+    <li class="breadcrumb-item active">List</li>
+@endsection
+
+@section('conteudo')
+  <style>
+    td{
+      padding: 10px;
+    }
+  </style>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>List</strong></h2>
+                </div>
+                <div class="body">
+                    <table>
+                      <tr>
+                        <td>Name</td>
+                        <td>{{client.name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Surname</td>
+                        <td>{{client.surname}}</td>
+                      </tr>
+                      <tr>
+                        <td>Phone</td>
+                        <td>{{client.phone}}</td>
+                      </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
