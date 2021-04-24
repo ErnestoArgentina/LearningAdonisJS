@@ -37,4 +37,15 @@ export default class AuthController {
 
     return 'Your account has been created'
   }
+
+  /**
+   * // logging in user
+   */
+  public async login ({ auth, request }) {
+    // return auth.user.id;
+    const { email, password } = request.all()
+    await auth.attempt(email, password)
+
+    return 'Logged in successfully'
+  }
 }
