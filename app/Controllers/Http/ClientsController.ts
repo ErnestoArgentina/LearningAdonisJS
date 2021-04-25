@@ -29,12 +29,12 @@ export default class ClientsController {
   public async show ({view, request}: HttpContextContract) {
     const params = request.params()
     const client = await Client.find(params.id)
-    return view.render('clients.show', {client})
+    return view.render('clients/show', {client})
   }
 
   public async edit ({view}: HttpContextContract,{id}) {
     const client = await Client.find(id)
-    return view.render('clients.edit', {client})
+    return view.render('clients/edit', {client})
   }
 
   public async update ({}: HttpContextContract) {
