@@ -40,7 +40,7 @@ Route.get('users', 'UsersController.index')
 Route.post('users', 'UsersController.store')
 //Clients
 Route.resource('clients', 'ClientsController')
-Route.on('/clients/new').render('clients/create')
+// Route.on('/clients/new').render('clients/create')
 
 // Auth
 Route.on('/register').render('auth/register')
