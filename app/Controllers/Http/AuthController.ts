@@ -1,6 +1,8 @@
 import User from 'App/Models/User'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import {Hash} from "crypto";
+// import {Hash} from "bcrypt";
 
 export default class AuthController {
 
@@ -32,7 +34,10 @@ export default class AuthController {
      */
     const user = new User()
     user.email = userDetails.email
-    user.password = userDetails.password
+    // user.password = userDetails.password
+    // @ts-ignore
+    // user.password = yield Hash.make(request.input('password'))
+    user.password = Hash.make(request.input('password'))
     await user.save()
 
     return 'Your account has been created'
@@ -44,12 +49,12 @@ export default class AuthController {
   public async login ({ auth, request }) {
     // return auth.user.id;
     const { email, password } = request.all()
-    var user = User.findBy('email', email)
-    if(user){
-      return user
-      return "Logged in"
-    }else
-    // await auth.attempt(email, password)
+    // var user = User.findBy('email', email)
+    // if(user){
+    //   return user
+    //   return "Logged in"
+    // }else
+    await auth.use('web').attempt(email, password)
 
     return 'Logged in successfully'
   }
