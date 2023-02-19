@@ -1,7 +1,7 @@
 "# LearningAdonisJS" 
 - [x] Auth
-- [ ] CRUD
-- [] Upload files
-- [] Websocket
+- [x] CRUD
+- [ ] Upload files
+- [ ] Websocket
 
 
